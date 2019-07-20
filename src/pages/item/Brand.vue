@@ -137,6 +137,14 @@
             this.oldBrand.categories = data;
           })
       },
+      deleteBrand(brand){
+        this.$http.delete("/item/brand/" + brand.id)
+          .then(() => {
+            this.getDataFromServer();
+            this.$message.success("删除成功！");
+          })
+          .catch(() => this.$message.error("删除失败！"))
+      },
       closeWindow(){
         // 重新加载数据
         this.getDataFromServer();
